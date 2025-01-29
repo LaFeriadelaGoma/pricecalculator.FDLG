@@ -138,7 +138,7 @@
 <body>
 
 <div class="container">
-    <!-- Columna izquierda: Tablas de neumáticos y servicios -->
+    <!-- Columna izquierda: Tablas de neumÃ¡ticos y servicios -->
     <div class="left-column">
         <h1>Calculador de Precio - La Feria de la Goma</h1>
 
@@ -212,7 +212,7 @@
             </div>
         </div>
 
-        <!-- Sección de servicios -->
+        <!-- SecciÃ³n de servicios -->
         <div class="price-list">
             <h2>Servicios</h2>
             <table class="price-table" id="serviciosTable">
@@ -309,16 +309,16 @@
             <h3>Resultados de Pago</h3>
             <p><strong>Pago con Tarjeta:</strong> $<span id="precioTarjeta">0</span> (+20% de recargo - Precio total)</p>
             <p><strong>Pago con Debito:</strong> $<span id="precioTransferencia">0</span> (+5% de recargo)</p>
-            <p><strong>Pago en Efectivo:</strong> $<span id="precioEfectivo">0</span> (-15% de descuento)</p>
+            <p><strong>Pago en Efectivo:</strong> $<span id="precioEfectivo">0</span> (-20% de descuento)</p>
         </div>
 
-        <!-- Botón Limpiar -->
+        <!-- BotÃ³n Limpiar -->
         <button class="clear-button" onclick="limpiarTodo()">Limpiar Todo</button>
     </div>
 </div>
 
 <div class="footer">
-    <p> © 2025 La Feria de la Goma. Todos los derechos reservados.</p>
+    <p> Â© 2025 La Feria de la Goma. Todos los derechos reservados.</p>
 </div>
 
 <script>
@@ -326,7 +326,7 @@
     let totalNeumaticos = 0;
     let totalServicios = 0;
 
-    // Función para agregar al carrito y calcular precios
+    // FunciÃ³n para agregar al carrito y calcular precios
     function agregarAlCarrito(precio) {
         if (event.target.closest("table") && event.target.closest("table").id === "neumaticosTable") {
             totalNeumaticos += precio;
@@ -336,11 +336,11 @@
             document.getElementById("totalServicios").textContent = totalServicios.toFixed(2);
         }
 
-        // Calcular precios automáticamente
+        // Calcular precios automÃ¡ticamente
         calcularPrecio();
     }
 
-    // Función para calcular los precios
+    // FunciÃ³n para calcular los precios
     function calcularPrecio() {
         const precioTotal = totalNeumaticos + totalServicios;
 
@@ -357,7 +357,7 @@
         document.getElementById("precioEfectivo").textContent = precioConEfectivo.toFixed(2);
     }
 
-    // Función para limpiar todo
+    // FunciÃ³n para limpiar todo
     function limpiarTodo() {
         totalNeumaticos = 0;
         totalServicios = 0;
