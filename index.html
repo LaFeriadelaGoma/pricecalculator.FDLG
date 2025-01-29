@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador de Precio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .left-column {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .right-column {
+            flex: 1;
+            margin-left: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .price-table th, .price-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .price-table th {
+            background-color: #FFEB3B;
+            color: black;
+            font-weight: bold;
+        }
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .price-table button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .price-table button:hover {
+            background-color: #1976D2;
+        }
+        .total-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .total-section h3 {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .total-section span {
+            font-weight: bold;
+            font-size: 24px;
+            color: #4CAF50;
+        }
+        .payment-results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e9f7e9;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .payment-results p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+        .payment-results span {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+        .clear-button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .clear-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Columna izquierda: Tablas de neumáticos y servicios -->
+    <div class="left-column">
+        <h1>Calculador de Precio - La Feria de la Goma</h1>
+
+        <!-- Seccion de la lista de precios -->
+        <div class="price-list">
+            <h2>Neumaticos</h2>
+            <table class="price-table" id="neumaticosTable">
+                <thead>
+                    <tr>
+                        <th>Neumaticos</th>
+                        <th>Precio por Par</th>
+                        <th>Presupuesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R13 (AUTO)</td>
+                        <td>$50.000</td>
+                        <td><button onclick="agregarAlCarrito(50000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R14 (AUTO)</td>
+                        <td>$60.000</td>
+                        <td><button onclick="agregarAlCarrito(60000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R15 (AUTO)</td>
+                        <td>$75.000</td>
+                        <td><button onclick="agregarAlCarrito(75000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R16 (AUTO)</td>
+                        <td>$85.000</td>
+                        <td><button onclick="agregarAlCarrito(85000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R17 (AUTO)</td>
+                        <td>$150.000</td>
+                        <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R18 (AUTO)</td>
+                        <td>$200.000</td>
+                        <td><button onclick="agregarAlCarrito(200000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R15 (CAMIONETA)</td>
+                        <td>$150.000</td>
+                        <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R16 (CAMIONETA)</td>
+                        <td>$150.000</td>
+                        <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R17 (CAMIONETA)</td>
+                        <td>$150.000</td>
+                        <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>R18 (CAMIONETA)</td>
+                        <td>$200.000</td>
+                        <td><button onclick="agregarAlCarrito(200000)">Agregar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="total-section">
+                <h3>Total de Neumaticos: $<span id="totalNeumaticos">0</span></h3>
+            </div>
+        </div>
+
+        <!-- Sección de servicios -->
+        <div class="price-list">
+            <h2>Servicios</h2>
+            <table class="price-table" id="serviciosTable">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Precio Servicio</th>
+                        <th>Presupuesto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arme y Desarme particular</td>
+                        <td>$4.000</td>
+                        <td><button onclick="agregarAlCarrito(4000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Rotacion x Lado</td>
+                        <td>$1.000</td>
+                        <td><button onclick="agregarAlCarrito(1000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alineacion (Auto)</td>
+                        <td>$10.000</td>
+                        <td><button onclick="agregarAlCarrito(10000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alineo y Balanceo (Auto)</td>
+                        <td>$18.000</td>
+                        <td><button onclick="agregarAlCarrito(18000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alineacion (Camioneta)</td>
+                        <td>$12.000</td>
+                        <td><button onclick="agregarAlCarrito(12000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alineo y Balanceo (Camioneta)</td>
+                        <td>$22.000</td>
+                        <td><button onclick="agregarAlCarrito(22000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Balanceo Particular (Auto)</td>
+                        <td>$3.500</td>
+                        <td><button onclick="agregarAlCarrito(3500)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Balanceo Particular (Camioneta)</td>
+                        <td>$4.000</td>
+                        <td><button onclick="agregarAlCarrito(4000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Parche (Auto)</td>
+                        <td>$4.500</td>
+                        <td><button onclick="agregarAlCarrito(4500)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Parche (Moto)</td>
+                        <td>$3.500</td>
+                        <td><button onclick="agregarAlCarrito(3500)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Aceite Gulf 20W-50 "Sachet" (Moto)</td>
+                        <td>$6.000</td>
+                        <td><button onclick="agregarAlCarrito(6000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Aceite Gulf 20W-50 "Pote" (Moto)</td>
+                        <td>$7.000</td>
+                        <td><button onclick="agregarAlCarrito(7000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Aceite Castrol 15W-40 (Auto)</td>
+                        <td>$8.000xLit</td>
+                        <td><button onclick="agregarAlCarrito(8000)">Agregar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Aceite Normal 40 (Auto)</td>
+                        <td>$4.000xLit</td>
+                        <td><button onclick="agregarAlCarrito(4000)">Agregar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="total-section">
+                <h3>Total de Servicios: $<span id="totalServicios">0</span></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Columna derecha: Resultados de precios -->
+    <div class="right-column">
+        <div class="payment-results">
+            <h3>Resultados de Pago</h3>
+            <p><strong>Pago con Tarjeta:</strong> $<span id="precioTarjeta">0</span> (+20% de recargo - Precio total)</p>
+            <p><strong>Pago con Debito:</strong> $<span id="precioTransferencia">0</span> (+5% de recargo)</p>
+            <p><strong>Pago en Efectivo:</strong> $<span id="precioEfectivo">0</span> (-15% de descuento)</p>
+        </div>
+
+        <!-- Botón Limpiar -->
+        <button class="clear-button" onclick="limpiarTodo()">Limpiar Todo</button>
+    </div>
+</div>
+
+<div class="footer">
+    <p> © 2025 La Feria de la Goma. Todos los derechos reservados.</p>
+</div>
+
+<script>
+    // Variables para almacenar los totales
+    let totalNeumaticos = 0;
+    let totalServicios = 0;
+
+    // Función para agregar al carrito y calcular precios
+    function agregarAlCarrito(precio) {
+        if (event.target.closest("table") && event.target.closest("table").id === "neumaticosTable") {
+            totalNeumaticos += precio;
+            document.getElementById("totalNeumaticos").textContent = totalNeumaticos.toFixed(2);
+        } else if (event.target.closest("table") && event.target.closest("table").id === "serviciosTable") {
+            totalServicios += precio;
+            document.getElementById("totalServicios").textContent = totalServicios.toFixed(2);
+        }
+
+        // Calcular precios automáticamente
+        calcularPrecio();
+    }
+
+    // Función para calcular los precios
+    function calcularPrecio() {
+        const precioTotal = totalNeumaticos + totalServicios;
+
+        if (isNaN(precioTotal) || precioTotal <= 0) {
+            return;
+        }
+
+        const precioConTarjeta = precioTotal * 1.20;
+        const precioConTransferencia = precioTotal * 1.05;
+        const precioConEfectivo = precioTotal * 1; // 
+
+        document.getElementById("precioTarjeta").textContent = precioConTarjeta.toFixed(2);
+        document.getElementById("precioTransferencia").textContent = precioConTransferencia.toFixed(2);
+        document.getElementById("precioEfectivo").textContent = precioConEfectivo.toFixed(2);
+    }
+
+    // Función para limpiar todo
+    function limpiarTodo() {
+        totalNeumaticos = 0;
+        totalServicios = 0;
+        document.getElementById("totalNeumaticos").textContent = "0";
+        document.getElementById("totalServicios").textContent = "0";
+        document.getElementById("precioTarjeta").textContent = "0";
+        document.getElementById("precioTransferencia").textContent = "0";
+        document.getElementById("precioEfectivo").textContent = "0";
+    }
+</script>
+
+</body>
+</html>
