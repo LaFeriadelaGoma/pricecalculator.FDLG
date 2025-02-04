@@ -12,8 +12,8 @@
             background-color: #f4f4f9;
             color: #333;
         }
-        .container {
-            display: flex;
+
+        .section {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
@@ -21,26 +21,67 @@
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .left-column {
-            flex: 2;
-            margin-right: 20px;
+
+        .presupuesto-detallado {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .right-column {
-            flex: 1;
-            margin-left: 20px;
+
+        .presupuesto-detallado h2 {
+            text-align: center;
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 15px;
         }
+
+        .presupuesto-detallado ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .presupuesto-detallado li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        .print-button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .print-button:hover {
+            background-color: #45a049;
+        }
+
         h1 {
             text-align: center;
             color: black;
             font-size: 28px;
             margin-bottom: 20px;
         }
+
         h2 {
             color: #333;
             font-size: 24px;
             margin-top: 30px;
             margin-bottom: 15px;
         }
+
         .price-table {
             width: 100%;
             border-collapse: collapse;
@@ -50,19 +91,23 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
         .price-table th, .price-table td {
             padding: 12px;
             text-align: center;
             border: 1px solid #ddd;
         }
+
         .price-table th {
             background-color: #FFEB3B;
             color: black;
             font-weight: bold;
         }
+
         .price-table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         .price-table button {
             background-color: #2196F3;
             color: white;
@@ -73,9 +118,11 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         .price-table button:hover {
             background-color: #1976D2;
         }
+
         .total-section {
             margin-top: 20px;
             padding: 20px;
@@ -83,17 +130,20 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
         .total-section h3 {
             text-align: center;
             font-size: 20px;
             color: #333;
             margin-bottom: 10px;
         }
+
         .total-section span {
             font-weight: bold;
             font-size: 24px;
             color: #4CAF50;
         }
+
         .payment-results {
             margin-top: 20px;
             padding: 20px;
@@ -101,21 +151,25 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+
         .payment-results p {
             font-size: 18px;
             color: #333;
             margin: 10px 0;
         }
+
         .payment-results span {
             font-weight: bold;
             color: #4CAF50;
         }
+
         .footer {
             text-align: center;
             margin-top: 30px;
             font-size: 14px;
             color: #777;
         }
+
         .clear-button {
             display: block;
             width: 100%;
@@ -130,105 +184,184 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         .clear-button:hover {
             background-color: #d32f2f;
+        }
+
+        .custom-calculation {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-calculation h3 {
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .custom-calculation input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .custom-calculation button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-calculation button:hover {
+            background-color: #1976D2;
+        }
+
+        .custom-calculation p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .custom-calculation span {
+            font-weight: bold;
+            color: #4CAF50;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Columna izquierda: Tablas de neumáticos y servicios -->
-    <div class="left-column">
-        <h1>Calculador de Precio - La Feria de la Goma</h1>
+<div class="presupuesto-detallado section">
+    <h2>Presupuesto Detallado</h2>
+    <ul id="listaPresupuesto"></ul>
+    <button class="print-button" onclick="imprimirPresupuesto()">Imprimir</button>
+</div>
 
-        <!-- Seccion de la lista de precios -->
-        <div class="price-list">
-            <h2>Neumaticos</h2>
-            <table class="price-table" id="neumaticosTable">
-                <thead>
-                    <tr>
-                        <th>Neumaticos</th>
-                        <th>Precio por Par</th>
-                        <th>Presupuesto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>R13 (AUTO)</td>
+<div class="section">
+    <h1>Calculador de Precio - La Feria de la Goma</h1>
+    <div class="payment-results">
+        <h3>Resultados de Pago</h3>
+        <p><strong>Pago con Tarjeta:</strong> $<span id="precioTarjeta">0</span> (+20% de recargo - Precio total)</p>
+        <p><strong>Cuotas sin Interes:</strong></p>
+        <p>3 cuotas de $<span id="cuota3">0</span></p>
+        <p>6 cuotas de $<span id="cuota6">0</span></p>
+
+        <p><strong>Pago con Debito:</strong> $<span id="precioTransferencia">0</span> (+5% de recargo)</p>
+        <p><strong>Pago en Efectivo:</strong> $<span id="precioEfectivo">0</span> (-15% de descuento)</p>
+    </div>
+
+    <button class="clear-button" onclick="limpiarTodo()">Limpiar Todo</button>
+</div>
+
+<div class="section">
+    <h2>Neumaticos</h2>
+    <table class="price-table" id="neumaticosTable">
+        <thead>
+            <tr>
+                <th>Neumaticos</th>
+                <th>Precio por Par</th>
+                <th>Presupuesto</th>
+            </tr>
+        </thead>
+        <tbody>
+            	    <tr>
+                        <td>R13 x2 (AUTO)</td>
                         <td>$50.000</td>
                         <td><button onclick="agregarAlCarrito(50000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R14 (AUTO)</td>
+                        <td>R14 x2 (AUTO)</td>
                         <td>$60.000</td>
                         <td><button onclick="agregarAlCarrito(60000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R15 (AUTO)</td>
+                        <td>R15 x2 (AUTO)</td>
                         <td>$75.000</td>
                         <td><button onclick="agregarAlCarrito(75000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R16 (AUTO)</td>
+                        <td>R16 x2 (AUTO)</td>
                         <td>$85.000</td>
                         <td><button onclick="agregarAlCarrito(85000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R17 (AUTO)</td>
+                        <td>R17 x2 (AUTO)</td>
                         <td>$150.000</td>
                         <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R18 (AUTO)</td>
+                        <td>R18 x2 (AUTO)</td>
                         <td>$200.000</td>
                         <td><button onclick="agregarAlCarrito(200000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R15 (CAMIONETA)</td>
+                        <td>R15 x2 (CAMIONETA)</td>
                         <td>$150.000</td>
                         <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R16 (CAMIONETA)</td>
+                        <td>R16 x2 (CAMIONETA)</td>
                         <td>$150.000</td>
                         <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R17 (CAMIONETA)</td>
+                        <td>R17 x2 (CAMIONETA)</td>
                         <td>$150.000</td>
                         <td><button onclick="agregarAlCarrito(150000)">Agregar</button></td>
                     </tr>
                     <tr>
-                        <td>R18 (CAMIONETA)</td>
+                        <td>R18 x2 (CAMIONETA)</td>
                         <td>$200.000</td>
                         <td><button onclick="agregarAlCarrito(200000)">Agregar</button></td>
                     </tr>
-                </tbody>
-            </table>
+        </tbody>
+    </table>
 
-            <div class="total-section">
-                <h3>Total de Neumaticos: $<span id="totalNeumaticos">0</span></h3>
-            </div>
-        </div>
+    <div class="total-section">
+        <h3>Total de Neumaticos: $<span id="totalNeumaticos">0</span></h3>
+    </div>
 
-        <!-- Sección de servicios -->
-        <div class="price-list">
-            <h2>Servicios</h2>
-            <table class="price-table" id="serviciosTable">
-                <thead>
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Precio Servicio</th>
-                        <th>Presupuesto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Arme y Desarme particular</td>
+    <h2>Servicios</h2>
+    <table class="price-table" id="serviciosTable">
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Precio Servicio</th>
+                <th>Presupuesto</th>
+            </tr>
+        </thead>
+        <tbody>
+            	    <tr>
+                        <td>Arme y Desarme particular (Auto)</td>
                         <td>$4.000</td>
                         <td><button onclick="agregarAlCarrito(4000)">Agregar</button></td>
                     </tr>
+
+		    <tr>
+                        <td>Arme y Desarme particular (Camioneta)</td>
+                        <td>$5.000</td>
+                        <td><button onclick="agregarAlCarrito(5000)">Agregar</button></td>
+                    </tr>
+
+		    <tr>
+                        <td>Valvula</td>
+                        <td>$3.000</td>
+                        <td><button onclick="agregarAlCarrito(3000)">Agregar</button></td>
+                    </tr>
+
                     <tr>
                         <td>Rotacion x Lado</td>
                         <td>$1.000</td>
@@ -294,27 +427,25 @@
                         <td>$4.000xLit</td>
                         <td><button onclick="agregarAlCarrito(4000)">Agregar</button></td>
                     </tr>
-                </tbody>
-            </table>
+        </tbody>
+    </table>
 
-            <div class="total-section">
-                <h3>Total de Servicios: $<span id="totalServicios">0</span></h3>
-            </div>
-        </div>
+    <div class="total-section">
+        <h3>Total de Servicios: $<span id="totalServicios">0</span></h3>
     </div>
+</div>
 
-    <!-- Columna derecha: Resultados de precios -->
-    <div class="right-column">
-        <div class="payment-results">
-            <h3>Resultados de Pago</h3>
-            <p><strong>Pago con Tarjeta:</strong> $<span id="precioTarjeta">0</span> (+20% de recargo - Precio total)</p>
-            <p><strong>Pago con Debito:</strong> $<span id="precioTransferencia">0</span> (+5% de recargo)</p>
-            <p><strong>Pago en Efectivo:</strong> $<span id="precioEfectivo">0</span> (-20% de descuento)</p>
-        </div>
+<div class="custom-calculation section">
+    <h3>Calculadora Personalizada</h3>
+    <input type="number" id="montoPersonalizado" placeholder="Ingrese el monto a calcular">
+    <button onclick="calcularMontoPersonalizado()">Calcular</button>
+    <p><strong>Pago con Tarjeta:</strong> $<span id="personalizadoTarjeta">0</span> (+20% de recargo)</p>
+    <p><strong>Cuotas sin Interés:</strong></p>
+    <p>3 cuotas de $<span id="personalizadoCuota3">0</span></p>
+    <p>6 cuotas de $<span id="personalizadoCuota6">0</span></p>
 
-        <!-- Botón Limpiar -->
-        <button class="clear-button" onclick="limpiarTodo()">Limpiar Todo</button>
-    </div>
+    <p><strong>Pago con Debito:</strong> $<span id="personalizadoTransferencia">0</span> (+5% de recargo)</p>
+    <p><strong>Pago en Efectivo:</strong> $<span id="personalizadoEfectivo">0</span> (-15% de descuento)</p>
 </div>
 
 <div class="footer">
@@ -322,50 +453,87 @@
 </div>
 
 <script>
-    // Variables para almacenar los totales
     let totalNeumaticos = 0;
     let totalServicios = 0;
+    let presupuestoItems = [];
 
-    // Función para agregar al carrito y calcular precios
     function agregarAlCarrito(precio) {
-        if (event.target.closest("table") && event.target.closest("table").id === "neumaticosTable") {
+        let item = event.target.closest('tr'); // Use closest to find the nearest tr parent
+        let descripcion = item.querySelector('td:first-child').textContent;
+
+        // Add item to budget list
+        presupuestoItems.push({ descripcion: descripcion, precio: precio });
+
+        // Update totals based on item type
+        if (item.closest('table').id === "neumaticosTable") {
             totalNeumaticos += precio;
-            document.getElementById("totalNeumaticos").textContent = totalNeumaticos.toFixed(2);
-        } else if (event.target.closest("table") && event.target.closest("table").id === "serviciosTable") {
+        } else if (item.closest('table').id === "serviciosTable") {
             totalServicios += precio;
-            document.getElementById("totalServicios").textContent = totalServicios.toFixed(2);
         }
 
-        // Calcular precios automáticamente
-        calcularPrecio();
+        // Update UI
+        actualizarTotales();
+        actualizarListaPresupuesto();
+        actualizarResultadosPago();
     }
 
-    // Función para calcular los precios
-    function calcularPrecio() {
-        const precioTotal = totalNeumaticos + totalServicios;
-
-        if (isNaN(precioTotal) || precioTotal <= 0) {
-            return;
-        }
-
-        const precioConTarjeta = precioTotal * 1.20;
-        const precioConTransferencia = precioTotal * 1.05;
-        const precioConEfectivo = precioTotal * 1; // 
-
-        document.getElementById("precioTarjeta").textContent = precioConTarjeta.toFixed(2);
-        document.getElementById("precioTransferencia").textContent = precioConTransferencia.toFixed(2);
-        document.getElementById("precioEfectivo").textContent = precioConEfectivo.toFixed(2);
+    function actualizarTotales() {
+        document.getElementById('totalNeumaticos').textContent = totalNeumaticos;
+        document.getElementById('totalServicios').textContent = totalServicios;
     }
 
-    // Función para limpiar todo
+    function actualizarListaPresupuesto() {
+        let lista = document.getElementById('listaPresupuesto');
+        lista.innerHTML = '';
+        presupuestoItems.forEach(item => {
+            let li = document.createElement('li');
+            li.textContent = `${item.descripcion}: $${item.precio}`;
+            lista.appendChild(li);
+        });
+    }
+
+    function actualizarResultadosPago() {
+        let total = totalNeumaticos + totalServicios;
+        let precioTarjeta = total * 1.2; // 20% surcharge
+        let precioTransferencia = total * 1.05; // 5% surcharge
+        let precioEfectivo = total * 1; // 15% discount
+
+        document.getElementById('precioTarjeta').textContent = precioTarjeta.toFixed(0);
+        document.getElementById('cuota3').textContent = (precioTarjeta / 3).toFixed(0);
+        document.getElementById('cuota6').textContent = (precioTarjeta / 6).toFixed(0);
+        document.getElementById('precioTransferencia').textContent = precioTransferencia.toFixed(0);
+        document.getElementById('precioEfectivo').textContent = precioEfectivo.toFixed(0);
+    }
+
     function limpiarTodo() {
         totalNeumaticos = 0;
         totalServicios = 0;
-        document.getElementById("totalNeumaticos").textContent = "0";
-        document.getElementById("totalServicios").textContent = "0";
-        document.getElementById("precioTarjeta").textContent = "0";
-        document.getElementById("precioTransferencia").textContent = "0";
-        document.getElementById("precioEfectivo").textContent = "0";
+        presupuestoItems = [];
+        actualizarTotales();
+        actualizarListaPresupuesto();
+        actualizarResultadosPago();
+    }
+
+    function imprimirPresupuesto() {
+        window.print();
+    }
+
+    function calcularMontoPersonalizado() {
+        let monto = parseFloat(document.getElementById('montoPersonalizado').value) || 0;
+        if (monto > 0) {
+            let precioTarjeta = monto * 1.2;
+            let precioTransferencia = monto * 1.05;
+            let precioEfectivo = monto * 1;
+
+            document.getElementById('personalizadoTarjeta').textContent = precioTarjeta.toFixed(0);
+            document.getElementById('personalizadoCuota3').textContent = (precioTarjeta / 3).toFixed(0);
+            document.getElementById('personalizadoCuota6').textContent = (precioTarjeta / 6).toFixed(0);
+
+            document.getElementById('personalizadoTransferencia').textContent = precioTransferencia.toFixed(0);
+            document.getElementById('personalizadoEfectivo').textContent = precioEfectivo.toFixed(0);
+        } else {
+            alert('Por favor, ingrese un monto válido.');
+        }
     }
 </script>
 
